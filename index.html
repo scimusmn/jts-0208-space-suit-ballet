@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JTS Space Suit Ballet</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Javascript -->
+    <script src = "js/vendor/jquery/dist/jquery.min.js"></script>
+    <script src=  "js/vendor/video-js/dist/video-js/video.js"></script>
+    <script src=  "js/Screensaver.js"></script>
+    <script src=  "js/main.js"></script>
+
+  </head>
+  <body>
+
+    <div id="wrapper">
+      <div id="selection_screen" class="screen">
+
+        <div class="video-button" data-role="button" data-video="videos/208-03-Andy.mp4">
+          <div class="play-btn"></div>
+        </div>
+        <div class="video-button" data-role="button" data-video="videos/208-03-Ballet.mp4">
+          <div class="play-btn"></div>
+        </div>
+
+      </div>
+      <div id="player_screen" class="screen" style="display:none;">
+
+        <video id="fullscreen_video" class="video-js vjs-default-skin">
+        </video>
+
+        <div class="home-btn" data-role="button"></div>
+      </div>
+
+    </div>
+
+  </body>
+</html>
