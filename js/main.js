@@ -82,7 +82,7 @@ $(document).ready( function(){
     function setupScreenSaver(){
 
         //3.5 minute screensaver timeout (one minute more than longest video)
-        screensaver = new Screensaver( 3.5*60, 'videos/Screensaver.mp4');
+        screensaver = new Screensaver( .15*60, 'videos/208-03-Screensaver.mp4');
 
     }
 
