@@ -9,6 +9,9 @@ $(document).ready( function(){
         setupThumbGrid();
         setupScreenSaver();
 
+        //remove click delays
+        FastClick.attach(document.body);
+
 	}
 
     function setupThumbGrid(){
@@ -16,18 +19,23 @@ $(document).ready( function(){
         //Attach click listeners
         $( ".video-button" ).on( "click", function(){
 
-            //Launch fullscreen video player
             var src = $(this).attr('data-video');
-            showFullscreenVideo(src);
+            //TEMP
+            src = 'videos/00.mp4';
+
+            //Quick depth animation highlighting selected video
+            TweenMax.to( $( ".video-button" ), 0.3, { css: { opacity:0.65, scale:1 }, ease:Power3.easeOut, onComplete:function(){
+                showFullscreenVideo(src);
+            }});
+            TweenMax.to( $( this ), 0.2, { css: { opacity:1, scale:1.015 }, ease:Power3.easeOut});
 
         });
 
     }
 
 	function setupFullscreenVideo(){
-
 		//Create video tag
-        var options = { "controls": false, "autoplay": true, "loop": false, "preload": "auto" };
+        var options = { "controls": false, "autoplay": true, "width": "100%", "height":"100%", "loop": false, "preload": "auto" };
 
         //Initialize player
         videoPlayer = videojs("fullscreen_video", options, function() {
@@ -65,6 +73,7 @@ $(document).ready( function(){
 
 	function showFullscreenVideo(vidSrc) {
 
+        console.log('showFullscreenVideo', vidSrc);
         videoPlayer.src([{ type: "video/mp4", src: vidSrc }]);
 
 	}
@@ -75,6 +84,7 @@ $(document).ready( function(){
         $('#player_screen').fadeOut('fast', function() {
             videoPlayer.pause();
             $("#player_screen").hide();
+            TweenMax.to( $( ".video-button" ), 0.2, { css: { opacity:1, scale:1 }, ease:Power3.easeIn });
         });
 
     }
@@ -82,7 +92,7 @@ $(document).ready( function(){
     function setupScreenSaver(){
 
         //3.5 minute screensaver timeout (one minute more than longest video)
-        screensaver = new Screensaver( .15*60, 'videos/208-03-Screensaver.mp4');
+        screensaver = new Screensaver( 3.5*60, 'videos/00.mp4');
 
     }
 
