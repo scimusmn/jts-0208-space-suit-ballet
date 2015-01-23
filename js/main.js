@@ -2,6 +2,7 @@ $(document).ready( function(){
 
     var videoPlayer = {};
     var screensaver = {};
+    var buttonsLocked = false;
 
 	function initialize() {
 
@@ -19,17 +20,24 @@ $(document).ready( function(){
         //Attach click listeners
         $( ".video-button" ).on( "click", function(){
 
+            if (buttonsLocked == true) return;
+            lockButtons(true);
+
             var src = $(this).attr('data-video');
-            //TEMP
-            src = 'videos/00.mp4';
 
             //Quick depth animation highlighting selected video
-            TweenMax.to( $( ".video-button" ), 0.3, { css: { opacity:0.65, scale:1 }, ease:Power3.easeOut, onComplete:function(){
+            TweenMax.to( $( this ).siblings( ".video-button" ), 0.35, { css: { opacity:0.6, scale:1 }, delay:0.01, ease:Power2.easeOut, onComplete:function(){
                 showFullscreenVideo(src);
             }});
-            TweenMax.to( $( this ), 0.2, { css: { opacity:1, scale:1.015 }, ease:Power3.easeOut});
+            TweenMax.to( $( this ), 0.8, { css: { opacity:1, scale:1.01 }, delay:0.075, ease:Elastic.easeOut});
 
         });
+
+    }
+
+    function lockButtons(doLock){
+
+        buttonsLocked = doLock;
 
     }
 
@@ -44,6 +52,7 @@ $(document).ready( function(){
 
             this.on("playing", function(){
 
+                console.log("Video waiting.");
                 $("#player_screen").show();
 
             });
@@ -74,6 +83,7 @@ $(document).ready( function(){
 	function showFullscreenVideo(vidSrc) {
 
         console.log('showFullscreenVideo', vidSrc);
+        $("#player_screen").show();
         videoPlayer.src([{ type: "video/mp4", src: vidSrc }]);
 
 	}
@@ -84,7 +94,8 @@ $(document).ready( function(){
         $('#player_screen').fadeOut('fast', function() {
             videoPlayer.pause();
             $("#player_screen").hide();
-            TweenMax.to( $( ".video-button" ), 0.2, { css: { opacity:1, scale:1 }, ease:Power3.easeIn });
+            TweenMax.to( $( ".video-button" ), 0.4, { css: { opacity:1, scale:1 }, delay:0.05, ease:Power3.easeIn });
+            lockButtons(false);
         });
 
     }
@@ -92,7 +103,7 @@ $(document).ready( function(){
     function setupScreenSaver(){
 
         //3.5 minute screensaver timeout (one minute more than longest video)
-        screensaver = new Screensaver( 3.5*60, 'videos/00.mp4');
+        screensaver = new Screensaver( 3.5*60, 'videos/ss.mp4');
 
     }
 

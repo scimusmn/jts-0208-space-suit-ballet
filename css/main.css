@@ -127,14 +127,17 @@ body {
 #wrapper {
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
-#selection_screen {
+#selection_screen,
+#player_screen {
   position: absolute;
   top: 0px;
   left: 0px;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 /* Prevent image ghost-dragging */
