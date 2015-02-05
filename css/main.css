@@ -103,7 +103,10 @@ textarea {
 /*
  * Global
  */
-body {
+html{
+  width: 1024px;
+  height: 768px;
+  overflow: hidden;
 
   /* disable text highlighting */
   -webkit-touch-callout: none;
@@ -115,6 +118,9 @@ body {
 
   /* hide cursor */
   cursor: none !important;
+}
+
+body {
 
   overflow: hidden;
   background-color: #000;
@@ -135,9 +141,10 @@ body {
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 100%;
-  height: 100%;
+  width: 1024px;
+  height: 768px;
   overflow: hidden;
+  background: black;
 }
 
 /* Prevent image ghost-dragging */
@@ -158,6 +165,10 @@ button:focus{
   position: absolute;
   width: 100%;
   height: 100%;
+}
+
+#wrapper .video-js{
+  position: absolute;
 }
 
 .screen {

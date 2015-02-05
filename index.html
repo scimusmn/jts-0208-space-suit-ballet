@@ -26,17 +26,21 @@
     <div id="wrapper">
     <div id="selection_screen" class="screen">
 
-        <div class="video-button" data-role="button" data-video="videos/andy.mp4">
+        <div class="video-button" data-role="button" data-video="fullscreen_andy">
           <div class="play-btn"></div>
         </div>
-        <div class="video-button" data-role="button" data-video="videos/ballet.mp4">
+        <div class="video-button" data-role="button" data-video="fullscreen_ballet">
           <div class="play-btn"></div>
         </div>
 
       </div>
       <div id="player_screen" class="screen" style="display:none">
 
-        <video id="fullscreen_video" class="video-js vjs-default-skin">
+        <video id="fullscreen_andy" class="video-js vjs-default-skin">
+          <source src="videos/andy.mp4" type='video/mp4'>
+        </video>
+        <video id="fullscreen_ballet" class="video-js vjs-default-skin">
+          <source src="videos/ballet.mp4" type='video/mp4'>
         </video>
 
         <div class="home-btn" data-role="button"></div>
